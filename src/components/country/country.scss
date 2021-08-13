@@ -1,0 +1,17 @@
+.country{
+    background-color: #fff;
+    border-radius: 10px;
+    .country_content{
+        padding: 20px;
+    }
+    .country_name{
+        margin: 20px 0;
+    }
+    .country_flag {
+        width: 100%;
+        max-height: 250px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;  
+    }
+    
+}

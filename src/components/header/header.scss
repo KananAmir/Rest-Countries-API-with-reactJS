@@ -1,0 +1,22 @@
+
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 10%;
+    padding-top: 25px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 3px;
+    .mode{
+        font-weight: 500;
+        font-size: 20px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    p{
+        display: inline-block;
+        margin-left: 10px;  
+    }
+}
