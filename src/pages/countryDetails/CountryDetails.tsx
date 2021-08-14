@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
 class CountryDetails extends Component {
+    
     render() {
         return (
             <div className="country_detail">
-                <img src="geo" alt="geo" />
+                <img src="" alt="" />
                 <div className="detail_content">
-                    <h2></h2>
+                    <h2>Name</h2>
                     
                 </div>
             </div>

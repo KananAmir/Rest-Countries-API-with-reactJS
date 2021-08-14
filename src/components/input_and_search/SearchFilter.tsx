@@ -1,20 +1,32 @@
 import React from 'react'
-import './search_filter.scss'
-const SearchFilter = () => {
+import './SearchFilter.scss'
+import { Input, Select } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+import { ChangeEvent } from 'react'
+
+interface IProps {
+	handleChangeSearchInput: (inputText: string) => void;
+}
+const SearchFilter = (props: IProps) => {
+    const onChangeSearchCountry = (event: ChangeEvent<HTMLInputElement>) => {
+		props.handleChangeSearchInput(event.target.value);
+    }
     return (
         <div className="search-filter">
-            <div className="input-div">
-                <input type="search"  placeholder="Search for a country.."/>
-                <i className="fas fa-search"></i>
-            </div>
-            <select name="filter" id="filter">
-                <option value="africa">Filter by the Region</option>
-                <option value="africa">Africa</option>
-                <option value="america">America</option>
-                <option value="asia">Asia</option>
-                <option value="europe">Europe</option>
-                <option value="oceania">Oceania</option>
-            </select>
+                <Input
+                    className="search-country"
+                    placeholder="Search for a country.."
+                    prefix={<SearchOutlined />}
+				    onChange={onChangeSearchCountry} />
+                		<div>
+				<Select allowClear className="filter-by-region" placeholder="Filter by the Region">
+					<Select.Option value="africa">Africa</Select.Option>
+					<Select.Option value="america">America</Select.Option>
+					<Select.Option value="asia">Asia</Select.Option>
+					<Select.Option value="europe">Europe</Select.Option>
+					<Select.Option value="oceania">Oceania</Select.Option>
+				</Select>
+			</div> 
         </div>
     )
 }

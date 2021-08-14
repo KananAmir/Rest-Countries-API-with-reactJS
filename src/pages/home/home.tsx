@@ -12,9 +12,7 @@ import { Modal } from "antd";
 interface MyState {
   countries: Array<CountryDto>;
 }
-interface myProps {
-  countries: CountryDto[];
-}
+
 @observer
 export default class HomePage extends React.Component<{
   appStore: AppStore;
@@ -40,14 +38,24 @@ export default class HomePage extends React.Component<{
       });
     }
   };
+
+  private getCountryBySearch = (searchCountry: string) => {
+		console.log(searchCountry);
+		this.setState({
+			searchCountry
+		});
+	}
+
+  
   render() {
     return (
       <div>
-        <SearchFilter />
+        <SearchFilter 
+        handleChangeSearchInput={this.getCountryBySearch}/>
 
         <div className="all_countries">
           <div className="row mt-5">
-            {this.state.countries.map((country: CountryDto) => (
+            {this.state.countries.map((country: CountryDto) => ( 
               <div className="col-12 col-md-4 col-lg-3 mb-5">
                 <Country
                   flag={country.flag}
