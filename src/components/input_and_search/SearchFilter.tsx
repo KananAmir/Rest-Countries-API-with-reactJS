@@ -4,10 +4,10 @@ import { Input, Select } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { ChangeEvent } from 'react'
 
-interface IProps {
+interface MyProps {
 	handleChangeSearchInput: (inputText: string) => void;
 }
-const SearchFilter = (props: IProps) => {
+const SearchFilter = (props: MyProps) => {
     const onChangeSearchCountry = (event: ChangeEvent<HTMLInputElement>) => {
 		props.handleChangeSearchInput(event.target.value);
     }

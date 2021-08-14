@@ -1,6 +1,6 @@
-import { inject, observer } from "mobx-react";
+import { observer } from "mobx-react";
 import React from "react";
-import http from "../../core/services/http";
+// import http from "../../core/services/http";
 import "./home.scss";
 import AppStore from "../../Store";
 import SearchFilter from "../../components/input_and_search/SearchFilter";
@@ -17,7 +17,8 @@ interface MyState {
 export default class HomePage extends React.Component<{
   appStore: AppStore;
 }> {
-  private CountriesService: CountriesService = new CountriesService();
+  
+  private countriesService: CountriesService = new CountriesService();
   state: MyState = {
     countries: [],
   };
@@ -27,7 +28,7 @@ export default class HomePage extends React.Component<{
 
   private getCountries = async () => {
     try {
-      const countries = await this.CountriesService.getAll();
+      const countries = await this.countriesService.getAll();
       this.setState({
         countries,
       });
@@ -40,29 +41,28 @@ export default class HomePage extends React.Component<{
   };
 
   private getCountryBySearch = (searchCountry: string) => {
-		console.log(searchCountry);
-		this.setState({
-			searchCountry
-		});
-	}
+    console.log(searchCountry);
+    this.setState({
+      searchCountry,
+    });
+  };
 
-  
   render() {
     return (
       <div>
-        <SearchFilter 
-        handleChangeSearchInput={this.getCountryBySearch}/>
+        <SearchFilter handleChangeSearchInput={this.getCountryBySearch} />
 
         <div className="all_countries">
           <div className="row mt-5">
-            {this.state.countries.map((country: CountryDto) => ( 
-              <div className="col-12 col-md-4 col-lg-3 mb-5">
+            {this.state.countries.map((country: CountryDto) => (
+              <div key={country.name} className="col-12 col-md-4 col-lg-3 mb-5">
                 <Country
                   flag={country.flag}
                   name={country.name}
                   population={country.population}
                   region={country.region}
                   capital={country.capital}
+                  alpha2Code={country.alpha2Code}
                 />
               </div>
             ))}
